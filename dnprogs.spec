@@ -1,6 +1,6 @@
 Summary:	DECnet tools and libraries
 Summary(pl):	Narzêdzia i biblioteki DECnet
-Name: dnprogs
+Name:		dnprogs
 
 %define dnet_major 1
 %define dnet_version %{dnet_major}.2
@@ -10,40 +10,41 @@ Name: dnprogs
 
 %define dnprogs_version %{dap_version}
 
-Version: %{dnprogs_version}
-Release: 2
-Copyright: GPL
-Group: Networking/Utilities
-URL: http://linux.dreamtime.org/decnet/
-Source: ftp://ftp.dreamtime.org/pub/decnet/%{name}-%{version}.tar.gz
-Patch0: dnprogs-1.05a-make.patch.gz
-Patch1: dnprogs-1.05a-rc.patch.gz
-ExclusiveOS: Linux
-Prereq: /sbin/chkconfig /sbin/ldconfig
+Version:	%{dnprogs_version}
+Release:	2
+License:	GPL
+Group:		Networking/Utilities
+Group(pl):	Sieciowe/Narzêdzia
+URL:		http://linux.dreamtime.org/decnet/
+Source0:	ftp://ftp.dreamtime.org/pub/decnet/%{name}-%{version}.tar.gz
+Patch0:		dnprogs-1.05a-make.patch.gz
+Patch1:		dnprogs-1.05a-rc.patch.gz
+ExclusiveOS:	Linux
+Prereq:		/sbin/chkconfig /sbin/ldconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 DECnet programs for Linux.
 
-These tools are the application layer interface for DECnet on Linux systems.
-They provide file/terminal access facilities between OpenVMS and Linux and 
-remote execution of commands.
+These tools are the application layer interface for DECnet on Linux
+systems. They provide file/terminal access facilities between OpenVMS
+and Linux and remote execution of commands.
 
-To use them you will need to have DECnet built into your kernel.
-See http://linux.dreamtime.org/decnet/ to get the kernel patch and
+To use them you will need to have DECnet built into your kernel. See
+http://linux.dreamtime.org/decnet/ to get the kernel patch and
 instructions on how to apply it.
 
 %description -l pl
-Programy DECnet dla Linuksa.
-Narzêdzia te stanowi± warstwê interfejsu aplikacji dla DECnetu na systemach
-linuksowych. Udostêpniaj± pewne u³atwienia w dostêpie terminalowym i plikowym 
-miêdzy OpenVMS-em a Linuksem oraz zdalnym wykonywaniem poleceñ.
-Aby ich u¿yæ musi siê mieæ wbudowan± w j±do obs³ugê DECnetu. £atê oraz 
-instrukcje dotycz±ce jej instalacji mo¿na uzyskaæ na stronie:
+Programy DECnet dla Linuksa. Narzêdzia te stanowi± warstwê interfejsu
+aplikacji dla DECnetu na systemach linuksowych. Udostêpniaj± pewne
+u³atwienia w dostêpie terminalowym i plikowym miêdzy OpenVMS-em a
+Linuksem oraz zdalnym wykonywaniem poleceñ. Aby ich u¿yæ musi siê mieæ
+wbudowan± w j±do obs³ugê DECnetu. £atê oraz instrukcje dotycz±ce jej
+instalacji mo¿na uzyskaæ na stronie:
 http://linux.dreamtime.org/decnet/.
 
 %prep
-%setup
+%setup -q
 %patch0 -p1 -b .make~
 %patch1 -p1 -b .rc~
 
@@ -51,15 +52,15 @@ find . -type f -name '*~' -print0 | xargs -0 rm -f
 
 %build
 make "DFLAGS=$RPM_OPT_FLAGS" LIBCRYPT=-lcrypt SHADOWDEFS=-DSHADOW_PWD \
-	prefix=/usr libprefix=/usr sysconfprefix=
+	prefix=%{_prefix} libprefix=%{_prefix} sysconfprefix=
 
 %install
 rm -rf $RPM_BUILD_ROOT
-mkdir -p $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT
 chmod go= $RPM_BUILD_ROOT
 
-mkdir -p $RPM_BUILD_ROOT/{etc/rc.d/{init,rc{0,1,2,3,4,5,6}}.d,lib,sbin}
-make prefix=$RPM_BUILD_ROOT/usr libprefix=$RPM_BUILD_ROOT/usr \
+install -d $RPM_BUILD_ROOT/{etc/rc.d/{init,rc{0,1,2,3,4,5,6}}.d,lib,sbin}
+make prefix=$RPM_BUILD_ROOT%{_prefix} libprefix=$RPM_BUILD_ROOT%{_prefix} \
 	sysconfprefix=$RPM_BUILD_ROOT install
 
 rm -f $RPM_BUILD_ROOT%{_libdir}/libdnet.so
@@ -73,16 +74,9 @@ ln -s ../../lib/libdnet.so.%{dnet_major} \
 
 mv -f $RPM_BUILD_ROOT%{_sbindir}/startnet $RPM_BUILD_ROOT/sbin/startnet
 
-touch $RPM_BUILD_ROOT/etc/decnet.proxy
+touch $RPM_BUILD_ROOT%{_sysconfdir}/decnet.proxy
 
-install -m 755 scripts/decnet.sh $RPM_BUILD_ROOT/etc/rc.d/init.d/decnet
-ln -fs ../init.d/decnet $RPM_BUILD_ROOT/etc/rc.d/rc0.d/K90decnet
-ln -fs ../init.d/decnet $RPM_BUILD_ROOT/etc/rc.d/rc1.d/K90decnet
-ln -fs ../init.d/decnet $RPM_BUILD_ROOT/etc/rc.d/rc2.d/K90decnet
-ln -fs ../init.d/decnet $RPM_BUILD_ROOT/etc/rc.d/rc3.d/K90decnet
-ln -fs ../init.d/decnet $RPM_BUILD_ROOT/etc/rc.d/rc4.d/K90decnet
-ln -fs ../init.d/decnet $RPM_BUILD_ROOT/etc/rc.d/rc5.d/K90decnet
-ln -fs ../init.d/decnet $RPM_BUILD_ROOT/etc/rc.d/rc6.d/K90decnet
+install scripts/decnet.sh $RPM_BUILD_ROOT/etc/rc.d/init.d/decnet
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -101,18 +95,10 @@ fi
 %defattr(644,root,root,755)
 %doc Documentation/* README NEWS dnprogs.lsm
 
-%config(noreplace) /etc/decnet.conf
-%config(noreplace) %verify(not md5 mtime size) /etc/decnet.proxy
+%config(noreplace) %{_sysconfdir}/decnet.conf
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/decnet.proxy
 
 %attr(754,root,root) /etc/rc.d/init.d/decnet
-%attr(-,root,root) %config(missingok) /etc/rc.d/rc0.d/K90decnet
-%attr(-,root,root) %config(missingok) /etc/rc.d/rc1.d/K90decnet
-%attr(-,root,root) %config(missingok) /etc/rc.d/rc2.d/K90decnet
-%attr(-,root,root) %config(missingok) /etc/rc.d/rc3.d/K90decnet
-%attr(-,root,root) %config(missingok) /etc/rc.d/rc4.d/K90decnet
-%attr(-,root,root) %config(missingok) /etc/rc.d/rc5.d/K90decnet
-%attr(-,root,root) %config(missingok) /etc/rc.d/rc6.d/K90decnet
-
 %attr(-,root,root) /lib/libdnet.so.%{dnet_major}
 %attr(755,root,root) /lib/libdnet.so.%{dnet_version}
 
