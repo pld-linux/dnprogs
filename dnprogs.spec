@@ -5,20 +5,20 @@ Name:		dnprogs
 %define dnet_major 1
 %define dnet_version %{dnet_major}.2
 
-%define dap_major 1
-%define dap_version %{dap_major}.05a
+%define dap_major 2
+%define dap_version %{dap_major}.23
 
 %define dnprogs_version %{dap_version}
 
 Version:	%{dnprogs_version}
-Release:	2
+Release:	0.1
 License:	GPL
 Group:		Networking/Utilities
-URL:		http://linux.dreamtime.org/decnet/
-Source0:	ftp://ftp.dreamtime.org/pub/decnet/%{name}-%{version}.tar.gz
-# Source0-md5:	5d8330cd9ca9cd00505f4e31f848e4c8
-Patch0:		%{name}-1.05a-make.patch.gz
-Patch1:		%{name}-1.05a-rc.patch.gz
+URL:		http://linux-decnet.sourceforge.net/
+Source0:	http://dl.sourceforge.net/linux-decnet/%{name}-%{version}.tar.gz
+# Source0-md5:	666e1479f60f7f0fe3bf8da3abab98bd
+#Patch0:		%{name}-1.05a-make.patch.gz
+#Patch1:		%{name}-1.05a-rc.patch.gz
 ExclusiveOS:	Linux
 Prereq:		/sbin/chkconfig
 Prereq:		/sbin/ldconfig
@@ -39,15 +39,15 @@ instructions on how to apply it.
 Programy DECnet dla Linuksa. Narzêdzia te stanowi± warstwê interfejsu
 aplikacji dla DECnetu na systemach linuksowych. Udostêpniaj± pewne
 u³atwienia w dostêpie terminalowym i plikowym miêdzy OpenVMS-em a
-Linuksem oraz zdalnym wykonywaniem poleceñ. Aby ich u¿yæ musi siê mieæ
-wbudowan± w j±do obs³ugê DECnetu. £atê oraz instrukcje dotycz±ce jej
+Linuksem oraz zdalnym wykonywaniem poleceñ. Aby ich u¿yæ trzeba mieæ
+wbudowan± w j±dro obs³ugê DECnetu. £atê oraz instrukcje dotycz±ce jej
 instalacji mo¿na uzyskaæ na stronie:
 http://linux.dreamtime.org/decnet/.
 
 %prep
 %setup -q
-%patch0 -p1 -b .make~
-%patch1 -p1 -b .rc~
+#%patch0 -p1 -b .make~
+#%patch1 -p1 -b .rc~
 
 find . -type f -name '*~' -print0 | xargs -0 rm -f
 
