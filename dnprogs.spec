@@ -20,7 +20,7 @@ Patch0: dnprogs-1.05a-make.patch.gz
 Patch1: dnprogs-1.05a-rc.patch.gz
 ExclusiveOS: Linux
 Prereq: /sbin/chkconfig /sbin/ldconfig
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 DECnet programs for Linux.
