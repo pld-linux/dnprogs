@@ -95,7 +95,7 @@ fi
 %config(noreplace) /etc/decnet.conf
 %config(noreplace) %verify(not md5 mtime size) /etc/decnet.proxy
 
-%attr(755,root,root) %config /etc/rc.d/init.d/decnet
+%attr(754,root,root) /etc/rc.d/init.d/decnet
 %attr(-,root,root) %config(missingok) /etc/rc.d/rc0.d/K90decnet
 %attr(-,root,root) %config(missingok) /etc/rc.d/rc1.d/K90decnet
 %attr(-,root,root) %config(missingok) /etc/rc.d/rc2.d/K90decnet
