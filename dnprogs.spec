@@ -84,14 +84,14 @@ install scripts/decnet.sh $RPM_BUILD_ROOT/etc/rc.d/init.d/decnet
 rm -rf $RPM_BUILD_ROOT
 
 %post 
-/sbin/chkconfig --add decnet
+NAME=decnet; %chkconfig_add
 /sbin/ldconfig
+
+%preun
+NAME=decnet; %chkconfig_del
 
 %postun
 /sbin/ldconfig
-if [ $1 = 0 ]; then
-    /sbin/chkconfig --del decnet
-fi
 
 %files
 %defattr(644,root,root,755)
