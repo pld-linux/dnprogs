@@ -136,36 +136,36 @@ fi
 %attr(-, root, root) /usr/lib/libdap.so.%{dap_major}
 %attr(755, root, root) /usr/lib/libdap.so.%{dap_version}
 
-/usr/man/man1/ctermd.1
-/usr/man/man1/dncopy.1
-/usr/man/man1/dndel.1
-/usr/man/man1/dndir.1
-/usr/man/man1/dnmirror.1
-#/usr/man/man1/dnmount.1
-/usr/man/man1/dnping.1
-%attr(-, root, root) /usr/man/man1/dnprint.1
-/usr/man/man1/dnsubmit.1
-/usr/man/man1/dntask.1
-%attr(-, root, root) /usr/man/man1/dntype.1
-/usr/man/man1/phone.1
-/usr/man/man1/sethost.1
-/usr/man/man1/startnet.1
+%{_mandir}/man1/ctermd.1
+%{_mandir}/man1/dncopy.1
+%{_mandir}/man1/dndel.1
+%{_mandir}/man1/dndir.1
+%{_mandir}/man1/dnmirror.1
+#%{_mandir}/man1/dnmount.1
+%{_mandir}/man1/dnping.1
+%attr(-, root, root) %{_mandir}/man1/dnprint.1
+%{_mandir}/man1/dnsubmit.1
+%{_mandir}/man1/dntask.1
+%attr(-, root, root) %{_mandir}/man1/dntype.1
+%{_mandir}/man1/phone.1
+%{_mandir}/man1/sethost.1
+%{_mandir}/man1/startnet.1
 
-/usr/man/man3/dnet_addr.3
-/usr/man/man3/dnet_conn.3
-/usr/man/man3/dnet_htoa.3
-/usr/man/man3/dnet_ntoa.3
-/usr/man/man3/getnodeadd.3
-/usr/man/man3/getnodebyaddr.3
-/usr/man/man3/getnodebyname.3
-/usr/man/man3/libdnet.3
-/usr/man/man3/setnodeent.3
+%{_mandir}/man3/dnet_addr.3
+%{_mandir}/man3/dnet_conn.3
+%{_mandir}/man3/dnet_htoa.3
+%{_mandir}/man3/dnet_ntoa.3
+%{_mandir}/man3/getnodeadd.3
+%{_mandir}/man3/getnodebyaddr.3
+%{_mandir}/man3/getnodebyname.3
+%{_mandir}/man3/libdnet.3
+%{_mandir}/man3/setnodeent.3
 
-/usr/man/man5/decnet.conf.5
-/usr/man/man5/decnet.proxy.5
+%{_mandir}/man5/decnet.conf.5
+%{_mandir}/man5/decnet.proxy.5
 
-/usr/man/man8/fal.8
-/usr/man/man8/phoned.8
+%{_mandir}/man8/fal.8
+%{_mandir}/man8/phoned.8
 
 %attr(755, root, root) /usr/sbin/ctermd
 %attr(755, root, root) /usr/sbin/dnmirror
