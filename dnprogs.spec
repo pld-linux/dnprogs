@@ -51,7 +51,7 @@ http://linux.dreamtime.org/decnet/.
 find . -type f -name '*~' -print0 | xargs -0 rm -f
 
 %build
-make "DFLAGS=$RPM_OPT_FLAGS" LIBCRYPT=-lcrypt SHADOWDEFS=-DSHADOW_PWD \
+%{__make} "DFLAGS=$RPM_OPT_FLAGS" LIBCRYPT=-lcrypt SHADOWDEFS=-DSHADOW_PWD \
 	prefix=%{_prefix} libprefix=%{_prefix} sysconfprefix=
 
 %install
@@ -60,7 +60,7 @@ install -d $RPM_BUILD_ROOT
 chmod go= $RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT/{etc/rc.d/{init,rc{0,1,2,3,4,5,6}}.d,lib,sbin}
-make prefix=$RPM_BUILD_ROOT%{_prefix} libprefix=$RPM_BUILD_ROOT%{_prefix} \
+%{__make} prefix=$RPM_BUILD_ROOT%{_prefix} libprefix=$RPM_BUILD_ROOT%{_prefix} \
 	sysconfprefix=$RPM_BUILD_ROOT install
 
 rm -f $RPM_BUILD_ROOT%{_libdir}/libdnet.so
