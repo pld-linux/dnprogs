@@ -15,7 +15,9 @@ Release:	2
 License:	GPL
 Group:		Networking/Utilities
 Group(de):	Netzwerkwesen/Werkzeuge
+Group(es):	Red/Utilitarios
 Group(pl):	Sieciowe/Narzêdzia
+Group(pt_BR):	Rede/Utilitários
 URL:		http://linux.dreamtime.org/decnet/
 Source0:	ftp://ftp.dreamtime.org/pub/decnet/%{name}-%{version}.tar.gz
 Patch0:		%{name}-1.05a-make.patch.gz
