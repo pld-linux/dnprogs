@@ -16,6 +16,7 @@ License:	GPL
 Group:		Networking/Utilities
 URL:		http://linux.dreamtime.org/decnet/
 Source0:	ftp://ftp.dreamtime.org/pub/decnet/%{name}-%{version}.tar.gz
+# Source0-md5:	5d8330cd9ca9cd00505f4e31f848e4c8
 Patch0:		%{name}-1.05a-make.patch.gz
 Patch1:		%{name}-1.05a-rc.patch.gz
 ExclusiveOS:	Linux
