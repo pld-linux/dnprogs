@@ -81,7 +81,7 @@ install scripts/decnet.sh $RPM_BUILD_ROOT/etc/rc.d/init.d/decnet
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post 
+%post
 /sbin/chkconfig --add decnet
 /sbin/ldconfig
 
