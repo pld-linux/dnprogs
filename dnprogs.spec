@@ -116,16 +116,16 @@ fi
 
 %attr(755, root, root) /sbin/startnet
 
-%attr(755, root, root) /usr/bin/dncopy
-%attr(755, root, root) /usr/bin/dndel
-%attr(755, root, root) /usr/bin/dndir
-%attr(755, root, root) /usr/bin/dnping
-%attr(-, root, root) /usr/bin/dnprint
-%attr(755, root, root) /usr/bin/dnsubmit
-%attr(755, root, root) /usr/bin/dntask
-%attr(-, root, root) /usr/bin/dntype
-%attr(755, root, root) /usr/bin/phone
-%attr(755, root, root) /usr/bin/sethost
+%attr(755, root, root) %{_bindir}/dncopy
+%attr(755, root, root) %{_bindir}/dndel
+%attr(755, root, root) %{_bindir}/dndir
+%attr(755, root, root) %{_bindir}/dnping
+%attr(-, root, root) %{_bindir}/dnprint
+%attr(755, root, root) %{_bindir}/dnsubmit
+%attr(755, root, root) %{_bindir}/dntask
+%attr(-, root, root) %{_bindir}/dntype
+%attr(755, root, root) %{_bindir}/phone
+%attr(755, root, root) %{_bindir}/sethost
 
 /usr/include/netdnet
 
