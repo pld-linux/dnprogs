@@ -69,7 +69,7 @@ ln -s libdnet.so.%{dnet_version} \
 ln -s ../../lib/libdnet.so.%{dnet_major} \
 	$RPM_BUILD_ROOT%{_libdir}/libdnet.so
 
-mv -f $RPM_BUILD_ROOT/usr/sbin/startnet $RPM_BUILD_ROOT/sbin/startnet
+mv -f $RPM_BUILD_ROOT%{_sbindir}/startnet $RPM_BUILD_ROOT/sbin/startnet
 
 touch $RPM_BUILD_ROOT/etc/decnet.proxy
 
@@ -127,7 +127,7 @@ fi
 %attr(755, root, root) %{_bindir}/phone
 %attr(755, root, root) %{_bindir}/sethost
 
-/usr/include/netdnet
+%{_includedir}/netdnet
 
 %{_libdir}/libdnet.a
 %attr(-, root, root) %{_libdir}/libdnet.so
@@ -167,9 +167,9 @@ fi
 %{_mandir}/man8/fal.8
 %{_mandir}/man8/phoned.8
 
-%attr(755, root, root) /usr/sbin/ctermd
-%attr(755, root, root) /usr/sbin/dnmirror
-%attr(755, root, root) /usr/sbin/fal
-%attr(755, root, root) /usr/sbin/phoned
-%attr(755, root, root) /usr/sbin/sendvmsmail
-%attr(755, root, root) /usr/sbin/vmsmaild
+%attr(755, root, root) %{_sbindir}/ctermd
+%attr(755, root, root) %{_sbindir}/dnmirror
+%attr(755, root, root) %{_sbindir}/fal
+%attr(755, root, root) %{_sbindir}/phoned
+%attr(755, root, root) %{_sbindir}/sendvmsmail
+%attr(755, root, root) %{_sbindir}/vmsmaild
