@@ -96,45 +96,45 @@ if [ $1 = 0 ]; then
 fi
 
 %files
-%defattr(644, root, root, 755)
+%defattr(644,root,root,755)
 %doc Documentation/* README NEWS dnprogs.lsm
 
 %config(noreplace) /etc/decnet.conf
 %config(noreplace) %verify(not md5 mtime size) /etc/decnet.proxy
 
-%attr(755, root, root) %config /etc/rc.d/init.d/decnet
-%attr(-, root, root) %config(missingok) /etc/rc.d/rc0.d/K90decnet
-%attr(-, root, root) %config(missingok) /etc/rc.d/rc1.d/K90decnet
-%attr(-, root, root) %config(missingok) /etc/rc.d/rc2.d/K90decnet
-%attr(-, root, root) %config(missingok) /etc/rc.d/rc3.d/K90decnet
-%attr(-, root, root) %config(missingok) /etc/rc.d/rc4.d/K90decnet
-%attr(-, root, root) %config(missingok) /etc/rc.d/rc5.d/K90decnet
-%attr(-, root, root) %config(missingok) /etc/rc.d/rc6.d/K90decnet
+%attr(755,root,root) %config /etc/rc.d/init.d/decnet
+%attr(-,root,root) %config(missingok) /etc/rc.d/rc0.d/K90decnet
+%attr(-,root,root) %config(missingok) /etc/rc.d/rc1.d/K90decnet
+%attr(-,root,root) %config(missingok) /etc/rc.d/rc2.d/K90decnet
+%attr(-,root,root) %config(missingok) /etc/rc.d/rc3.d/K90decnet
+%attr(-,root,root) %config(missingok) /etc/rc.d/rc4.d/K90decnet
+%attr(-,root,root) %config(missingok) /etc/rc.d/rc5.d/K90decnet
+%attr(-,root,root) %config(missingok) /etc/rc.d/rc6.d/K90decnet
 
-%attr(-, root, root) /lib/libdnet.so.%{dnet_major}
-%attr(755, root, root) /lib/libdnet.so.%{dnet_version}
+%attr(-,root,root) /lib/libdnet.so.%{dnet_major}
+%attr(755,root,root) /lib/libdnet.so.%{dnet_version}
 
-%attr(755, root, root) /sbin/startnet
+%attr(755,root,root) /sbin/startnet
 
-%attr(755, root, root) %{_bindir}/dncopy
-%attr(755, root, root) %{_bindir}/dndel
-%attr(755, root, root) %{_bindir}/dndir
-%attr(755, root, root) %{_bindir}/dnping
-%attr(-, root, root) %{_bindir}/dnprint
-%attr(755, root, root) %{_bindir}/dnsubmit
-%attr(755, root, root) %{_bindir}/dntask
-%attr(-, root, root) %{_bindir}/dntype
-%attr(755, root, root) %{_bindir}/phone
-%attr(755, root, root) %{_bindir}/sethost
+%attr(755,root,root) %{_bindir}/dncopy
+%attr(755,root,root) %{_bindir}/dndel
+%attr(755,root,root) %{_bindir}/dndir
+%attr(755,root,root) %{_bindir}/dnping
+%attr(-,root,root) %{_bindir}/dnprint
+%attr(755,root,root) %{_bindir}/dnsubmit
+%attr(755,root,root) %{_bindir}/dntask
+%attr(-,root,root) %{_bindir}/dntype
+%attr(755,root,root) %{_bindir}/phone
+%attr(755,root,root) %{_bindir}/sethost
 
 %{_includedir}/netdnet
 
 %{_libdir}/libdnet.a
-%attr(-, root, root) %{_libdir}/libdnet.so
+%attr(-,root,root) %{_libdir}/libdnet.so
 %{_libdir}/libdap.a
-%attr(-, root, root) %{_libdir}/libdap.so
-%attr(-, root, root) %{_libdir}/libdap.so.%{dap_major}
-%attr(755, root, root) %{_libdir}/libdap.so.%{dap_version}
+%attr(-,root,root) %{_libdir}/libdap.so
+%attr(-,root,root) %{_libdir}/libdap.so.%{dap_major}
+%attr(755,root,root) %{_libdir}/libdap.so.%{dap_version}
 
 %{_mandir}/man1/ctermd.1
 %{_mandir}/man1/dncopy.1
@@ -143,10 +143,10 @@ fi
 %{_mandir}/man1/dnmirror.1
 #%{_mandir}/man1/dnmount.1
 %{_mandir}/man1/dnping.1
-%attr(-, root, root) %{_mandir}/man1/dnprint.1
+%attr(-,root,root) %{_mandir}/man1/dnprint.1
 %{_mandir}/man1/dnsubmit.1
 %{_mandir}/man1/dntask.1
-%attr(-, root, root) %{_mandir}/man1/dntype.1
+%attr(-,root,root) %{_mandir}/man1/dntype.1
 %{_mandir}/man1/phone.1
 %{_mandir}/man1/sethost.1
 %{_mandir}/man1/startnet.1
@@ -167,9 +167,9 @@ fi
 %{_mandir}/man8/fal.8
 %{_mandir}/man8/phoned.8
 
-%attr(755, root, root) %{_sbindir}/ctermd
-%attr(755, root, root) %{_sbindir}/dnmirror
-%attr(755, root, root) %{_sbindir}/fal
-%attr(755, root, root) %{_sbindir}/phoned
-%attr(755, root, root) %{_sbindir}/sendvmsmail
-%attr(755, root, root) %{_sbindir}/vmsmaild
+%attr(755,root,root) %{_sbindir}/ctermd
+%attr(755,root,root) %{_sbindir}/dnmirror
+%attr(755,root,root) %{_sbindir}/fal
+%attr(755,root,root) %{_sbindir}/phoned
+%attr(755,root,root) %{_sbindir}/sendvmsmail
+%attr(755,root,root) %{_sbindir}/vmsmaild
