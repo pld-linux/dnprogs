@@ -33,6 +33,15 @@ To use them you will need to have DECnet built into your kernel.
 See http://linux.dreamtime.org/decnet/ to get the kernel patch and
 instructions on how to apply it.
 
+%description -l pl
+Programy DECnet dla Linuksa.
+Narzêdzia te stanowi± warstwê interfejsu aplikacji dla DECnetu na systemach
+linuksowych. Udostêpniaj± pewne u³atwienia w dostêpie terminalowym i plikowym 
+miêdzy OpenVMS-em a Linuksem oraz zdalnym wykonywaniem poleceñ.
+Aby ich u¿yæ musi siê mieæ wbudowan± w j±do obs³ugê DECnetu. £atê oraz 
+instrukcje dotycz±ce jej instalacji mo¿na uzyskaæ na stronie:
+http://linux.dreamtime.org/decnet/.
+
 %prep
 %setup
 %patch0 -p1 -b .make~
