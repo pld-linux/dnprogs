@@ -14,13 +14,15 @@ Version:	%{dnprogs_version}
 Release:	2
 License:	GPL
 Group:		Networking/Utilities
+Group(de):	Netzwerkwesen/Werkzeuge
 Group(pl):	Sieciowe/Narzêdzia
 URL:		http://linux.dreamtime.org/decnet/
 Source0:	ftp://ftp.dreamtime.org/pub/decnet/%{name}-%{version}.tar.gz
-Patch0:		dnprogs-1.05a-make.patch.gz
-Patch1:		dnprogs-1.05a-rc.patch.gz
+Patch0:		%{name}-1.05a-make.patch.gz
+Patch1:		%{name}-1.05a-rc.patch.gz
 ExclusiveOS:	Linux
-Prereq:		/sbin/chkconfig /sbin/ldconfig
+Prereq:		/sbin/chkconfig
+Prereq:		/sbin/ldconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -51,7 +53,7 @@ http://linux.dreamtime.org/decnet/.
 find . -type f -name '*~' -print0 | xargs -0 rm -f
 
 %build
-%{__make} "DFLAGS=$RPM_OPT_FLAGS" LIBCRYPT=-lcrypt SHADOWDEFS=-DSHADOW_PWD \
+%{__make} DFLAGS="%{rpmcflags}" LIBCRYPT=-lcrypt SHADOWDEFS=-DSHADOW_PWD \
 	prefix=%{_prefix} libprefix=%{_prefix} sysconfprefix=
 
 %install
@@ -67,9 +69,9 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/libdnet.so
 rm -f $RPM_BUILD_ROOT%{_libdir}/libdnet.so.%{dnet_major}
 mv -f $RPM_BUILD_ROOT%{_libdir}/libdnet.so.%{dnet_version} \
 	$RPM_BUILD_ROOT/lib/libdnet.so.%{dnet_version}
-ln -s libdnet.so.%{dnet_version} \
+ln -sf libdnet.so.%{dnet_version} \
 	$RPM_BUILD_ROOT/lib/libdnet.so.%{dnet_major}
-ln -s ../../lib/libdnet.so.%{dnet_major} \
+ln -sf ../../lib/libdnet.so.%{dnet_major} \
 	$RPM_BUILD_ROOT%{_libdir}/libdnet.so
 
 mv -f $RPM_BUILD_ROOT%{_sbindir}/startnet $RPM_BUILD_ROOT/sbin/startnet
@@ -124,36 +126,36 @@ fi
 %attr(-,root,root) %{_libdir}/libdap.so.%{dap_major}
 %attr(755,root,root) %{_libdir}/libdap.so.%{dap_version}
 
-%{_mandir}/man1/ctermd.1
-%{_mandir}/man1/dncopy.1
-%{_mandir}/man1/dndel.1
-%{_mandir}/man1/dndir.1
-%{_mandir}/man1/dnmirror.1
-#%{_mandir}/man1/dnmount.1
-%{_mandir}/man1/dnping.1
-%attr(-,root,root) %{_mandir}/man1/dnprint.1
-%{_mandir}/man1/dnsubmit.1
-%{_mandir}/man1/dntask.1
-%attr(-,root,root) %{_mandir}/man1/dntype.1
-%{_mandir}/man1/phone.1
-%{_mandir}/man1/sethost.1
-%{_mandir}/man1/startnet.1
+%{_mandir}/man1/ctermd.1*
+%{_mandir}/man1/dncopy.1*
+%{_mandir}/man1/dndel.1*
+%{_mandir}/man1/dndir.1*
+%{_mandir}/man1/dnmirror.1*
+#%{_mandir}/man1/dnmount.1*
+%{_mandir}/man1/dnping.1*
+%{_mandir}/man1/dnprint.1*
+%{_mandir}/man1/dnsubmit.1*
+%{_mandir}/man1/dntask.1*
+%{_mandir}/man1/dntype.1*
+%{_mandir}/man1/phone.1*
+%{_mandir}/man1/sethost.1*
+%{_mandir}/man1/startnet.1*
 
-%{_mandir}/man3/dnet_addr.3
-%{_mandir}/man3/dnet_conn.3
-%{_mandir}/man3/dnet_htoa.3
-%{_mandir}/man3/dnet_ntoa.3
-%{_mandir}/man3/getnodeadd.3
-%{_mandir}/man3/getnodebyaddr.3
-%{_mandir}/man3/getnodebyname.3
-%{_mandir}/man3/libdnet.3
-%{_mandir}/man3/setnodeent.3
+%{_mandir}/man3/dnet_addr.3*
+%{_mandir}/man3/dnet_conn.3*
+%{_mandir}/man3/dnet_htoa.3*
+%{_mandir}/man3/dnet_ntoa.3*
+%{_mandir}/man3/getnodeadd.3*
+%{_mandir}/man3/getnodebyaddr.3*
+%{_mandir}/man3/getnodebyname.3*
+%{_mandir}/man3/libdnet.3*
+%{_mandir}/man3/setnodeent.3*
 
-%{_mandir}/man5/decnet.conf.5
-%{_mandir}/man5/decnet.proxy.5
+%{_mandir}/man5/decnet.conf.5*
+%{_mandir}/man5/decnet.proxy.5*
 
-%{_mandir}/man8/fal.8
-%{_mandir}/man8/phoned.8
+%{_mandir}/man8/fal.8*
+%{_mandir}/man8/phoned.8*
 
 %attr(755,root,root) %{_sbindir}/ctermd
 %attr(755,root,root) %{_sbindir}/dnmirror
