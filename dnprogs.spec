@@ -14,14 +14,15 @@ Version:	%{dnprogs_version}
 Release:	0.1
 License:	GPL
 Group:		Networking/Utilities
-URL:		http://linux-decnet.sourceforge.net/
 Source0:	http://dl.sourceforge.net/linux-decnet/%{name}-%{version}.tar.gz
 # Source0-md5:	666e1479f60f7f0fe3bf8da3abab98bd
 #Patch0:		%{name}-1.05a-make.patch.gz
 #Patch1:		%{name}-1.05a-rc.patch.gz
+URL:		http://linux-decnet.sourceforge.net/
 ExclusiveOS:	Linux
-Prereq:		/sbin/chkconfig
-Prereq:		/sbin/ldconfig
+PreReq:		rc-scripts
+Requires(post,preun):	/sbin/chkconfig
+Requires(post):	/sbin/ldconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -88,9 +89,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %postun
 /sbin/ldconfig
-if [ $1 = 0 ]; then
-    /sbin/chkconfig --del decnet
+if [ "$1" = "0" ]; then
+	/sbin/chkconfig --del decnet
 fi
+
+%postun -p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
