@@ -60,14 +60,14 @@ mkdir -p $RPM_BUILD_ROOT/{etc/rc.d/{init,rc{0,1,2,3,4,5,6}}.d,lib,sbin}
 make prefix=$RPM_BUILD_ROOT/usr libprefix=$RPM_BUILD_ROOT/usr \
 	sysconfprefix=$RPM_BUILD_ROOT install
 
-rm -f $RPM_BUILD_ROOT/usr/lib/libdnet.so
-rm -f $RPM_BUILD_ROOT/usr/lib/libdnet.so.%{dnet_major}
-mv -f $RPM_BUILD_ROOT/usr/lib/libdnet.so.%{dnet_version} \
+rm -f $RPM_BUILD_ROOT%{_libdir}/libdnet.so
+rm -f $RPM_BUILD_ROOT%{_libdir}/libdnet.so.%{dnet_major}
+mv -f $RPM_BUILD_ROOT%{_libdir}/libdnet.so.%{dnet_version} \
 	$RPM_BUILD_ROOT/lib/libdnet.so.%{dnet_version}
 ln -s libdnet.so.%{dnet_version} \
 	$RPM_BUILD_ROOT/lib/libdnet.so.%{dnet_major}
 ln -s ../../lib/libdnet.so.%{dnet_major} \
-	$RPM_BUILD_ROOT/usr/lib/libdnet.so
+	$RPM_BUILD_ROOT%{_libdir}/libdnet.so
 
 mv -f $RPM_BUILD_ROOT/usr/sbin/startnet $RPM_BUILD_ROOT/sbin/startnet
 
@@ -129,12 +129,12 @@ fi
 
 /usr/include/netdnet
 
-/usr/lib/libdnet.a
-%attr(-, root, root) /usr/lib/libdnet.so
-/usr/lib/libdap.a
-%attr(-, root, root) /usr/lib/libdap.so
-%attr(-, root, root) /usr/lib/libdap.so.%{dap_major}
-%attr(755, root, root) /usr/lib/libdap.so.%{dap_version}
+%{_libdir}/libdnet.a
+%attr(-, root, root) %{_libdir}/libdnet.so
+%{_libdir}/libdap.a
+%attr(-, root, root) %{_libdir}/libdap.so
+%attr(-, root, root) %{_libdir}/libdap.so.%{dap_major}
+%attr(755, root, root) %{_libdir}/libdap.so.%{dap_version}
 
 %{_mandir}/man1/ctermd.1
 %{_mandir}/man1/dncopy.1
