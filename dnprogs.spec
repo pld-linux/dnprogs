@@ -129,7 +129,7 @@ fi
 %{_mandir}/man1/dndel.1*
 %{_mandir}/man1/dndir.1*
 %{_mandir}/man1/dnmirror.1*
-#%{_mandir}/man1/dnmount.1*
+#%%{_mandir}/man1/dnmount.1*
 %{_mandir}/man1/dnping.1*
 %{_mandir}/man1/dnprint.1*
 %{_mandir}/man1/dnsubmit.1*
