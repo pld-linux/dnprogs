@@ -3,9 +3,9 @@
 %define dap_major 2
 %define dap_version %{dap_major}.23
 %define dnprogs_version %{dap_version}
-Summary:        DECnet tools and libraries
-Summary(pl):    Narzêdzia i biblioteki DECnet
-Name:           dnprogs
+Summary:	DECnet tools and libraries
+Summary(pl):	Narzêdzia i biblioteki DECnet
+Name:		dnprogs
 Version:	%{dnprogs_version}
 Release:	0.1
 License:	GPL
@@ -13,10 +13,10 @@ Group:		Networking/Utilities
 Source0:	http://dl.sourceforge.net/linux-decnet/%{name}-%{version}.tar.gz
 # Source0-md5:	666e1479f60f7f0fe3bf8da3abab98bd
 URL:		http://linux-decnet.sourceforge.net/
-ExclusiveOS:	Linux
 PreReq:		rc-scripts
 Requires(post,preun):	/sbin/chkconfig
 Requires(post):	/sbin/ldconfig
+ExclusiveOS:	Linux
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -93,25 +93,25 @@ fi
 %config(noreplace) %{_sysconfdir}/decnet.conf
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/decnet.proxy
 %attr(754,root,root) /etc/rc.d/init.d/decnet
-%attr(-,root,root) /lib/libdnet.so.%{dnet_major}
+%attr(755,root,root) /lib/libdnet.so.%{dnet_major}
 %attr(755,root,root) /lib/libdnet.so.%{dnet_version}
 %attr(755,root,root) /sbin/startnet
 %attr(755,root,root) %{_bindir}/dncopy
 %attr(755,root,root) %{_bindir}/dndel
 %attr(755,root,root) %{_bindir}/dndir
 %attr(755,root,root) %{_bindir}/dnping
-%attr(-,root,root) %{_bindir}/dnprint
+%attr(755,root,root) %{_bindir}/dnprint
 %attr(755,root,root) %{_bindir}/dnsubmit
 %attr(755,root,root) %{_bindir}/dntask
-%attr(-,root,root) %{_bindir}/dntype
+%attr(755,root,root) %{_bindir}/dntype
 %attr(755,root,root) %{_bindir}/phone
 %attr(755,root,root) %{_bindir}/sethost
 %{_includedir}/netdnet
 %{_libdir}/libdnet.a
-%attr(-,root,root) %{_libdir}/libdnet.so
+%attr(755,root,root) %{_libdir}/libdnet.so
 %{_libdir}/libdap.a
-%attr(-,root,root) %{_libdir}/libdap.so
-%attr(-,root,root) %{_libdir}/libdap.so.%{dap_major}
+%attr(755,root,root) %{_libdir}/libdap.so
+%attr(755,root,root) %{_libdir}/libdap.so.%{dap_major}
 %attr(755,root,root) %{_libdir}/libdap.so.%{dap_version}
 %{_mandir}/man1/ctermd.1*
 %{_mandir}/man1/dncopy.1*
