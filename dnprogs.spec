@@ -4,7 +4,7 @@
 %define dap_version %{dap_major}.23
 %define dnprogs_version %{dap_version}
 Summary:	DECnet tools and libraries
-Summary(pl):	Narzêdzia i biblioteki DECnet
+Summary(pl.UTF-8):   NarzÄ™dzia i biblioteki DECnet
 Name:		dnprogs
 Version:	%{dnprogs_version}
 Release:	0.1
@@ -30,13 +30,13 @@ To use them you will need to have DECnet built into your kernel. See
 http://linux.dreamtime.org/decnet/ to get the kernel patch and
 instructions on how to apply it.
 
-%description -l pl
-Programy DECnet dla Linuksa. Narzêdzia te stanowi± warstwê interfejsu
-aplikacji dla DECnetu na systemach linuksowych. Udostêpniaj± pewne
-u³atwienia w dostêpie terminalowym i plikowym miêdzy OpenVMS-em a
-Linuksem oraz zdalnym wykonywaniem poleceñ. Aby ich u¿yæ trzeba mieæ
-wbudowan± w j±dro obs³ugê DECnetu. £atê oraz instrukcje dotycz±ce jej
-instalacji mo¿na uzyskaæ na stronie:
+%description -l pl.UTF-8
+Programy DECnet dla Linuksa. NarzÄ™dzia te stanowiÄ… warstwÄ™ interfejsu
+aplikacji dla DECnetu na systemach linuksowych. UdostÄ™pniajÄ… pewne
+uÅ‚atwienia w dostÄ™pie terminalowym i plikowym miÄ™dzy OpenVMS-em a
+Linuksem oraz zdalnym wykonywaniem poleceÅ„. Aby ich uÅ¼yÄ‡ trzeba mieÄ‡
+wbudowanÄ… w jÄ…dro obsÅ‚ugÄ™ DECnetu. ÅatÄ™ oraz instrukcje dotyczÄ…ce jej
+instalacji moÅ¼na uzyskaÄ‡ na stronie:
 http://linux.dreamtime.org/decnet/.
 
 %prep
