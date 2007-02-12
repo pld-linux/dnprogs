@@ -4,7 +4,7 @@
 %define dap_version %{dap_major}.23
 %define dnprogs_version %{dap_version}
 Summary:	DECnet tools and libraries
-Summary(pl.UTF-8):   Narzędzia i biblioteki DECnet
+Summary(pl.UTF-8):	Narzędzia i biblioteki DECnet
 Name:		dnprogs
 Version:	%{dnprogs_version}
 Release:	0.1
